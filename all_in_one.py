@@ -3,6 +3,7 @@ from download_paper import paper_crawler
 from download_twitter_discussion import tweet_in_one
 from download_reddit_discussion import reddit_in_one, init_reddit
 from tqdm import tqdm
+import argparse
 
 def all_in_one(query_list, conference_list):
     # get the interested paper
@@ -30,7 +31,11 @@ def all_in_one(query_list, conference_list):
 
 
 if __name__ == '__main__':
-    conference_list = ['emnlp', 'acl', 'nips', 'aaai', 'iclr', 'nurips', 'cikm', 'sdm', 'kdd', 'sigir']
-    query = ["weak supervision"]
-    all_in_one(query_list=query, conference_list=conference_list)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--paper_key_word", '-kw', required=True, type=str)
+    parser.add_argument("--conference_list",'-cl',type='str', default="emnlp,acl")
+    args = parser.parse_args()
+    # conference_list = ['emnlp', 'acl', 'nips', 'aaai', 'iclr', 'nurips', 'cikm', 'sdm', 'kdd', 'sigir']
+    args.cl = args.cl.split(",")
+    all_in_one(query_list=args.kw, conference_list=args.cl)
 

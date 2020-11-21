@@ -2,7 +2,7 @@
 This tool can allow you to crawl the interested paper in arxiv and in the meantime crawl the social 
 discussion about this paper on Twitter and Reddit and store all the data in MongoDB database. 
 
-### Install requirement packages
+### Install required packages
 ```shell script
 pip install -r requirements.txt
 ```
